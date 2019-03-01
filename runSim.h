@@ -4,11 +4,12 @@
 #include <math.h>
 #include <armadillo>
 #include <string>
+#include "sixMat.h"
 
 using namespace std;
 using namespace arma;
 
-SixMat runSim(double W, int length, double t);
+void runSim(double W, int length, double t, SixMat* A);
 
 
 #endif
