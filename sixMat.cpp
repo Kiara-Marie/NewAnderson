@@ -16,21 +16,15 @@ void SixMat::diag(const vec& energies){
 	this->bigMat.diag() = energies;
 }
 
-void SixMat::print(string s){
-	this->bigMat.print(s);
+void SixMat::print(ostream& arrayFile){
+	this->bigMat.print(arrayFile);
 }
 
 vec SixMat::eigs(){
-	vec ret(pow(length,3));
-	mat test(this->numRows, this->numRows);
-	test.zeros();
-	vec energies = randu<vec>(this->numRows);
-	energies = energies * 5;
-	test.diag() = energies;
-	vec tVec = eig_sym(test);
-	//ret.subvec(0,this->numRows-2) = eig_sym(test,this->numRows-1);
-	//ret(this->numRows-1) = eig_sym(test,1,"sm");
-	//ret.subvec(0,pow(length,3)-2)= eig_sym(this->bigMat,pow(length,3)-1);
-	//ret(pow(length,3)-1) = eig_sym(this->bigMat,1,"sm");
+	vec ret(this->numRows);
+	vec eigval = eigs_sym(this->bigMat, this->numRows-1);
+	vec smallestEigVal = eigs_sym(this->bigMat, 1,"sm");
+	ret.subvec(1,this->numRows-1) = eigval;
+	ret.subvec(0,0) = smallestEigVal;
 	return ret;
 }

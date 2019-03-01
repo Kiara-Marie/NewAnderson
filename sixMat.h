@@ -1,7 +1,7 @@
 #ifndef _SIXMAT_H_
 #define _SIXMAT_H_
 #include <iostream>
-#include <cmath>
+#include <math.h>
 #include <armadillo>
 #include <string>
 
@@ -14,7 +14,7 @@ class SixMat{
 		SixMat(int length);
 		void set(int xi, int xy, int xz, int xj, int yj, int zj, double to);
 		void diag(const vec& energies);
-		void print(string s);
+		void print(ostream &arrayFile);
 		vec eigs();
 
 	private:
