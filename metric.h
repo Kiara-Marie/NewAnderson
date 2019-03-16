@@ -11,7 +11,7 @@ using namespace arma;
 class metric {
 	public:
 		void save(const vec &eigval,const mat &eigvec,const mat &A );
-		void printResult();
+		virtual void printResult()=0;
 };
 
 #endif
