@@ -6,45 +6,41 @@
 #include <ostream>
 #include "sixMat.h"
 #include "runSim.h"
+#include "metric.h"
+#include "levelSpacings.h"
+#include "resultFinder.h"
+#include "runSim1D.h"
 
 using namespace std;
 using namespace arma;
 
+
 int main(int argc, char** argv){
 	// set variables
 	double W = 5;
-	int length = 3;
-	double t = 1;
+	int numSites = 3;
 	int iterations = 10;
 
 	if (argc > 1){
 		W = stoi(argv[1]);
 	}
 	if (argc > 2){
-		length = stoi(argv[2]);
+		numSites = stoi(argv[2]);
 	}
 	if (argc > 3){
 		iterations = stoi(argv[3]);
 	}
+	vector<metric*> metrics;
+	metrics.push_back(new LevelSpacings());
+	ResultFinder rf = ResultFinder(metrics);
 
 	for (int i = 0; i< iterations; i++ ){
 		mat A(numSites,numSites);
-		run1DSim(W, length, t,&A);
-		saveResults(A);
+		runSim1D(W, numSites,A);
+		rf.saveResults(A);
 	}
 
-	printResults();
+	rf.printResults();
 
 	return 0;
-}
-
-// TODO
-void saveResults(SixMat& A){
-	return;
-}
-
-// TODO
-void printResults(){
-	cout<<"Not implemented\n";
-	return;
 }

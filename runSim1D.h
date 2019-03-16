@@ -8,7 +8,9 @@
 using namespace std;
 using namespace arma;
 
-void runSim1D(double W, int length, double t, mat* A);
+void runSim1D(double W, int length, mat& A);
 
+double findT(int xi, int xj);
+int is_symmetric(const mat& A);
 
 #endif
