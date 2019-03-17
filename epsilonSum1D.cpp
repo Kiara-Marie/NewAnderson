@@ -37,7 +37,7 @@ int main(int argc, char** argv){
 	for (int i = 0; i< iterations; i++ ){
 		mat A(numSites,numSites);
 		runSim1D(W, numSites,A);
-		rf.saveResults(A);
+		rf.saveResults(A, iterations);
 	}
 
 	rf.printResults();

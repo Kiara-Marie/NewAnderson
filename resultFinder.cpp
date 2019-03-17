@@ -11,12 +11,12 @@ ResultFinder::ResultFinder(vector<metric*> metrics){
 	this->metrics = metrics;
 }
 
-void ResultFinder::saveResults(mat& A){
+void ResultFinder::saveResults(mat& A, int iterations){
 	vec eigval;
 	mat eigvec;
 	eig_sym( eigval, eigvec, A );
 	for (int i = 0; i< this->metrics.size(); i++){
-		this->metrics[i]->save(eigval, eigvec, A);
+		this->metrics[i]->save(eigval, eigvec, A, iterations);
 	}
 }
 

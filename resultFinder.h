@@ -12,7 +12,7 @@ class ResultFinder{
 		vector<metric*> metrics;
 	public:
 		ResultFinder(vector<metric*> metrics);
-		void saveResults(mat& A);
+		void saveResults(mat& A, int iterations);
 		void printResults();
 };
 

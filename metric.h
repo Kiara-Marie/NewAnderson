@@ -10,7 +10,7 @@ using namespace arma;
 
 class metric {
 	public:
-		void save(const vec &eigval,const mat &eigvec,const mat &A );
+		virtual void save(const vec &eigval,const mat &eigvec,const mat &A, int iterations)=0;
 		virtual void printResult()=0;
 };
 

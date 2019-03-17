@@ -6,6 +6,3 @@
 #include "levelSpacings.h"
 using namespace std;
 using namespace arma;
-void metric::save(const vec &eigval,const mat &eigvec,const mat &A ){
-	return;
-}
