@@ -4,7 +4,7 @@
 #include <string>
 using namespace arma;
 using namespace std;
-
+int MAXT = 3;
 int is_symmetric(const mat& A){
 	if (A.n_rows != A.n_cols){
 		return 0;
@@ -20,7 +20,12 @@ int is_symmetric(const mat& A){
 }
 // TODO
 double findT(int xi, int xj){
-	return 1;
+	double p = rand() % (MAXT + 1);
+	double r = xi - xj;
+	double j = p/(r*r*r);
+	if (j > 0.00001){
+		return j;
+	} else return 0;
 }
 void runSim1D(double W, int length, mat& A){
 	// make random
