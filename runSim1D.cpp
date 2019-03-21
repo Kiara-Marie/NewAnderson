@@ -18,14 +18,16 @@ int is_symmetric(const mat& A){
 	}
 	return 1;
 }
-// TODO
+
 double findT(int xi, int xj){
 	double p = rand() % (MAXT + 1);
 	double r = xi - xj;
 	double j = p/(r*r*r);
-	if (j > 0.00001){
+	/*if (j > 0.00001){
 		return j;
 	} else return 0;
+	*/
+	return 1;
 }
 void runSim1D(double W, int length, mat& A){
 	// make random
@@ -51,9 +53,11 @@ void runSim1D(double W, int length, mat& A){
 			if(xi == xj) {
 				continue;
 			}
-			t = findT(xi,xj);
-			A(xi, xj) = t;
-			A(xj, xi) = t;
+			if(xi == xj + 1 || xi == xj -1){
+				t = findT(xi,xj);
+				A(xi, xj) = t;
+				A(xj, xi) = t;
+			}
 		}
 	}
 	if(!is_symmetric(A)){

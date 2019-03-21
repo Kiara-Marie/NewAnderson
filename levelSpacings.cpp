@@ -28,7 +28,7 @@ void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int i
 		down = eigval(i) - eigval(i - 1);
 		this->spacings.push_back(up);
 		if (up > 3e-15){
-			cout<<"i = "<<i<<", Spacing = "<<up<<"\n";
+		//	cout<<"i = "<<i<<", Spacing = "<<up<<"\n";
 		}
 		this->avgENPrime(i) += up/down;
 	}

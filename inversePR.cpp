@@ -3,16 +3,13 @@
 #include <armadillo>
 #include <string>
 #include "metric.h"
-#include "avgEigVec.h"
+#include "inversePR.h"
 using namespace std;
 using namespace arma;
 
-void AvgEigVec::save(const vec &eigval,const mat &eigvec,const mat &A, int iterations){
+void InversePR::save(const vec &eigval,const mat &eigvec,const mat &A, int iterations){
 	if (this->avgMat.n_elem == 0){
-		//cout<<"eigvec\n";
-		//eigvec.print();
-		this->avgMat = zeros(eigvec.n_rows, eigvec.n_rows);
-		cout<<"Num rows = "<<eigvec.n_rows<<"Num columns = "<< eigvec.n_cols<<"\n";
+		this->avgMat = zeros(eigvec.n_rows, eigvec.n_cols);
 	} else if (this->avgMat.n_elem != eigvec.n_elem){
 		cerr<<"Inconsistent number of eigenvectors!\n";
 	}
@@ -27,7 +24,7 @@ void AvgEigVec::save(const vec &eigval,const mat &eigvec,const mat &A, int itera
 
 }
 
-void AvgEigVec::printResult(){
+void InversePR::printResult(){
 	cout<<"Average Eigenvectors:\n";
 	this->avgMat = this->avgMat / iterations;
 	this->avgMat.print();

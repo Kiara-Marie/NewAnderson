@@ -10,6 +10,7 @@
 #include "levelSpacings.h"
 #include "resultFinder.h"
 #include "runSim1D.h"
+#include "avgEigVec.h"
 
 using namespace std;
 using namespace arma;
@@ -32,12 +33,17 @@ int main(int argc, char** argv){
 	}
 	vector<metric*> metrics;
 	metrics.push_back(new LevelSpacings());
+	//metrics.push_back(new AvgEigVec());
 	ResultFinder rf = ResultFinder(metrics);
 
 	for (int i = 0; i< iterations; i++ ){
 		mat A(numSites,numSites);
 		runSim1D(W, numSites,A);
 		rf.saveResults(A, iterations);
+		if (i==5){
+			cout<<"Example matrix\n";
+			A.print();
+		}
 	}
 
 	rf.printResults();
