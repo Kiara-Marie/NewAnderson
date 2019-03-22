@@ -9,8 +9,12 @@ using namespace arma;
 
 void AvgEigVec::save(const vec &eigval,const mat &eigvec,const mat &A, int iterations){
 	if (this->avgMat.n_elem == 0){
+		cout<<"eigval\n";
+		eigval.print();
 		//cout<<"eigvec\n";
 		//eigvec.print();
+		cout<<"eigvec.n_elem = "<<eigvec.n_elem<<"\n";
+		cout<<"*(eigvec(0)).print()) = \n";
 		this->avgMat = zeros(eigvec.n_rows, eigvec.n_rows);
 		cout<<"Num rows = "<<eigvec.n_rows<<"Num columns = "<< eigvec.n_cols<<"\n";
 	} else if (this->avgMat.n_elem != eigvec.n_elem){

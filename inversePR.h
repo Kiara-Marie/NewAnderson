@@ -16,7 +16,7 @@ class InversePR : public metric {
 	public:
 		void save(const vec &eigval,const mat &eigvec,const mat &A, int iterations);
 
-		void printResult();
+		void printResult(ostream resultsFile);
 };
 
 #endif

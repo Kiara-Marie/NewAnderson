@@ -4,7 +4,7 @@
 #include <string>
 using namespace arma;
 using namespace std;
-int MAXT = 3;
+
 int is_symmetric(const mat& A){
 	if (A.n_rows != A.n_cols){
 		return 0;
@@ -19,17 +19,7 @@ int is_symmetric(const mat& A){
 	return 1;
 }
 
-double findT(int xi, int xj){
-	double p = rand() % (MAXT + 1);
-	double r = xi - xj;
-	double j = p/(r*r*r);
-	/*if (j > 0.00001){
-		return j;
-	} else return 0;
-	*/
-	return 1;
-}
-void runSim1D(double W, int length, mat& A){
+void runSim1D(double W, int length, mat& A, double (*jFinder)(int,int)){
 	// make random
 	arma_rng::set_seed_random();
 
@@ -53,13 +43,11 @@ void runSim1D(double W, int length, mat& A){
 			if(xi == xj) {
 				continue;
 			}
-			if(xi == xj + 1 || xi == xj -1){
-				t = findT(xi,xj);
-				A(xi, xj) = t;
-				A(xj, xi) = t;
+			t = jFinder(xi,xj);
+			A(xi, xj) = t;
+			A(xj, xi) = t;
 			}
 		}
-	}
 	if(!is_symmetric(A)){
 		cerr<<"Matrix Not Hermitian!\n";
 	}
