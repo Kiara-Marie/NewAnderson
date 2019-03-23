@@ -36,14 +36,23 @@ void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int i
 }
 
 void LevelSpacings::printResult(){
+	//ostream spacingsFile;
+	//spacingsFile.rdbuf(cout.rdbuf());
 	cout<<"All Spacings:\n";
 	for (int i = 1; i< spacings.size(); i++){
 			cout<<spacings[i]<< ", ";
 	}
-	cout<<"\n";
+
+	//ostream ENFile = getENFile();
 	this->avgENPrime = this->avgENPrime / iterations;
-	cout<<"Average En' between levels: \n";
+cout<<"Average En' between levels: \n";
 	avgENPrime.print();
 
 	return;
 }
+
+/*ostream getSFile(){
+	string date = getDate();
+	fopen("")
+}
+*/

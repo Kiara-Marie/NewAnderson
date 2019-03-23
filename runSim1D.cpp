@@ -24,6 +24,7 @@ void runSim1D(double W, int length, mat& A, double (*jFinder)(int,int)){
 	arma_rng::set_seed_random();
 
 	// set up
+	
 	vec energies = randu<vec>(length);
 	energies = energies * W;
 	vec toRmv = ones(length);
@@ -35,6 +36,7 @@ void runSim1D(double W, int length, mat& A, double (*jFinder)(int,int)){
 	toRmv = toRmv / W/2;
 	toRmv = toRmv * eSum;
 	energies = energies - toRmv;
+
 
 	A.diag() = energies;
 	double t = 1;
