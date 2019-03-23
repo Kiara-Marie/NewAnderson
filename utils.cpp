@@ -2,6 +2,7 @@
 #include <math.h>
 #include <armadillo>
 #include <string>
+#include <time.h>
 #include "metric.h"
 #include "inversePR.h"
 using namespace std;

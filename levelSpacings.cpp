@@ -23,13 +23,10 @@ void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int i
 	double up;
 	double down;
 
-	for(int i = 1; i<eigval.n_elem-2; i++){
+	for(int i = 1; i<eigval.n_elem-1; i++){
 		up = eigval(i+1) - eigval(i);
 		down = eigval(i) - eigval(i - 1);
 		this->spacings.push_back(up);
-		if (up > 3e-15){
-		//	cout<<"i = "<<i<<", Spacing = "<<up<<"\n";
-		}
 		this->avgENPrime(i) += up/down;
 	}
 	return;
@@ -45,7 +42,7 @@ void LevelSpacings::printResult(){
 
 	//ostream ENFile = getENFile();
 	this->avgENPrime = this->avgENPrime / iterations;
-cout<<"Average En' between levels: \n";
+	cout<<"Average En' between levels: \n";
 	avgENPrime.print();
 
 	return;

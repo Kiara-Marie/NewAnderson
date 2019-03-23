@@ -17,7 +17,6 @@ using namespace arma;
 
 int MAXT = 3;
 
-
 double findT(int xi, int xj){
 	double p = rand() % (MAXT + 1);
 	double r = xi - xj;

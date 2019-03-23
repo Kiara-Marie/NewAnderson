@@ -14,7 +14,6 @@ class AvgEigVec : public metric {
 		mat avgMat;
 	public:
 		void save(const vec &eigval,const mat &eigvec,const mat &A, int iterations);
-
 		void printResult();
 };
 
