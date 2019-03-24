@@ -4,10 +4,14 @@
 #include <math.h>
 #include <armadillo>
 #include <string>
+#include <fstream>
+#include <ostream>
+#include <ctime>
 
 using namespace std;
 using namespace arma;
 
 string getDate();
 string getTime();
+void getFile(ostream* file,const char* addToName);
 #endif

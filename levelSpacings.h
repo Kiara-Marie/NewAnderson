@@ -4,6 +4,9 @@
 #include <math.h>
 #include <armadillo>
 #include <string>
+#include <fstream>
+#include <ostream>
+#include "utils.h"
 
 using namespace std;
 using namespace arma;

@@ -15,13 +15,13 @@ void ResultFinder::saveResults(mat& A, int iterations){
 	vec eigval;
 	mat eigvec;
 	eig_sym( eigval, eigvec, A );
-	for (int i = 0; i< this->metrics.size(); i++){
+	for (unsigned int i = 0; i< this->metrics.size(); i++){
 		this->metrics[i]->save(eigval, eigvec, A, iterations);
 	}
 }
 
 void ResultFinder::printResults(){
-	for (int i = 0; i< this->metrics.size(); i++){
+	for (unsigned int i = 0; i< this->metrics.size(); i++){
 		this->metrics[i]->printResult();
 	}
 }

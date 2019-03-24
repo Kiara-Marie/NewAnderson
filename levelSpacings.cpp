@@ -2,8 +2,11 @@
 #include <math.h>
 #include <armadillo>
 #include <string>
+#include <fstream>
+#include <ostream>
 #include "metric.h"
 #include "levelSpacings.h"
+#include "utils.h"
 using namespace std;
 using namespace arma;
 
@@ -23,7 +26,7 @@ void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int i
 	double up;
 	double down;
 
-	for(int i = 1; i<eigval.n_elem-1; i++){
+	for(unsigned int i = 1; i<eigval.n_elem-1; i++){
 		up = eigval(i+1) - eigval(i);
 		down = eigval(i) - eigval(i - 1);
 		this->spacings.push_back(up);
@@ -33,23 +36,23 @@ void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int i
 }
 
 void LevelSpacings::printResult(){
-	//ostream spacingsFile;
-	//spacingsFile.rdbuf(cout.rdbuf());
-	cout<<"All Spacings:\n";
-	for (int i = 1; i< spacings.size(); i++){
-			cout<<spacings[i]<< ", ";
+	ostream spacingsFile(NULL);
+	char toAdd[] = "-spacings.csv";
+	string stupid = getDate();
+	string moreStupid = getTime();
+	getFile(&spacingsFile,toAdd);
+	spacingsFile<<"All Spacings:\n";
+	for (unsigned int i = 1; i< spacings.size(); i++){
+			spacingsFile<<spacings[i]<< ", ";
 	}
-
-	//ostream ENFile = getENFile();
+/*
+	ostream* ENFile;
+	toAdd = "-EnPrime.txt";
+	ENFile = getFile(toAdd);
 	this->avgENPrime = this->avgENPrime / iterations;
-	cout<<"Average En' between levels: \n";
-	avgENPrime.print();
+	*(ENFile)<<"Average En' between levels: \n";
+	avgENPrime.print(*(ENFile));
 
+*/
 	return;
 }
-
-/*ostream getSFile(){
-	string date = getDate();
-	fopen("")
-}
-*/

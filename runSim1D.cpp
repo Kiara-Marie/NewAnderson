@@ -9,8 +9,8 @@ int is_symmetric(const mat& A){
 	if (A.n_rows != A.n_cols){
 		return 0;
 	}
-	for (int i = 0; i< A.n_rows;i++){
-		for (int j = 0; j<A.n_cols;j++){
+	for (unsigned int i = 0; i< A.n_rows;i++){
+		for (unsigned int j = 0; j<A.n_cols;j++){
 			if(A(i,j) != A(j,i)){
 				return 0;
 			}
@@ -24,7 +24,7 @@ void runSim1D(double W, int length, mat& A, double (*jFinder)(int,int)){
 	arma_rng::set_seed_random();
 
 	// set up
-	
+
 	vec energies = randu<vec>(length);
 	energies = energies * W;
 	vec toRmv = ones(length);
