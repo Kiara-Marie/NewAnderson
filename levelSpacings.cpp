@@ -38,21 +38,19 @@ void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int i
 void LevelSpacings::printResult(){
 	ostream spacingsFile(NULL);
 	char toAdd[] = "-spacings.csv";
-	string stupid = getDate();
-	string moreStupid = getTime();
 	getFile(&spacingsFile,toAdd);
 	spacingsFile<<"All Spacings:\n";
 	for (unsigned int i = 1; i< spacings.size(); i++){
 			spacingsFile<<spacings[i]<< ", ";
 	}
-/*
-	ostream* ENFile;
-	toAdd = "-EnPrime.txt";
-	ENFile = getFile(toAdd);
-	this->avgENPrime = this->avgENPrime / iterations;
-	*(ENFile)<<"Average En' between levels: \n";
-	avgENPrime.print(*(ENFile));
 
-*/
+	ostream ENFile(NULL);
+	char EtoAdd[] = "-EnPrime.txt";
+	getFile(ENFile,EtoAdd);
+	this->avgENPrime = this->avgENPrime / iterations;
+	ENFile<<"Average En' between levels: \n";
+	avgENPrime.print(ENFile);
+
+
 	return;
 }
