@@ -10,9 +10,8 @@ using namespace arma;
 
 class InversePR : public metric {
 	private:
-		vector<double> spacings;
-		vec avgENPrime;
-		int iterations = 0;
+		vector<double> iprs;
+		int iterations;
 	public:
 		void save(const vec &eigval,const mat &eigvec,const mat &A, int iterations);
 

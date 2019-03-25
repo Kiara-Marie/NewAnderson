@@ -11,6 +11,8 @@
 #include "resultFinder.h"
 #include "runSim1D.h"
 #include "avgEigVec.h"
+#include "utils.h"
+#include "inversePR.h"
 
 using namespace std;
 using namespace arma;
@@ -57,6 +59,7 @@ int main(int argc, char** argv){
 	vector<metric*> metrics;
 	metrics.push_back(new LevelSpacings());
 	metrics.push_back(new AvgEigVec());
+	metrics.push_back(new InversePR());
 	ResultFinder rf = ResultFinder(metrics);
 
 	for (int i = 0; i< iterations; i++ ){

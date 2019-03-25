@@ -36,7 +36,7 @@ void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int i
 }
 
 void LevelSpacings::printResult(){
-	ostream spacingsFile(NULL);
+	ostream file(NULL);
 	char toAdd[] = "-spacings.csv";
 
 	filebuf fileBuffer;
@@ -44,10 +44,10 @@ void LevelSpacings::printResult(){
 	fileName.append(getSeconds());
 	fileName.append(toAdd);
 	fileBuffer.open(fileName,ios_base::out);
-	spacingsFile.rdbuf(&fileBuffer);
+	file.rdbuf(&fileBuffer);
 
 	for (unsigned int i = 1; i< spacings.size(); i++){
-			spacingsFile<<spacings[i]<< ", ";
+			file<<spacings[i]<< ", ";
 	}
 
 	ostream ENFile(NULL);
