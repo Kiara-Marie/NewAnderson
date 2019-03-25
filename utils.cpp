@@ -18,7 +18,7 @@ string getDate(){
     time ( &rawtime );
     timeinfo = localtime ( &rawtime );
 	char date[80];
-    sprintf(date,"%d_%d_%d_TIME_%d_%d_%d",timeinfo->tm_mday, timeinfo->tm_mon + 1, timeinfo->tm_year + 1900, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
+    sprintf(date,"%d_%d_%d",timeinfo->tm_mday, timeinfo->tm_mon + 1, timeinfo->tm_year + 1900);
 	return date;
 }
 
@@ -32,11 +32,12 @@ string getTime(){
 	return now;
 }
 
-void getFile(ostream* file,const char* addToName){
-	filebuf fileBuffer;
-	string fileName = getDate();
-	fileName.append(addToName);
-	fileBuffer.open(fileName,ios_base::out);
-	file->rdbuf(&fileBuffer);
-	return;
+string getSeconds(){
+	time_t rawtime;
+    struct tm * timeinfo;
+    time ( &rawtime );
+    timeinfo = localtime ( &rawtime );
+	char now[80];
+	sprintf(now,"_%d", timeinfo->tm_hour*3600+ timeinfo->tm_min*60+ timeinfo->tm_sec);
+	return now;
 }

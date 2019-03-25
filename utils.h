@@ -13,5 +13,5 @@ using namespace arma;
 
 string getDate();
 string getTime();
-void getFile(ostream* file,const char* addToName);
+string getSeconds();
 #endif

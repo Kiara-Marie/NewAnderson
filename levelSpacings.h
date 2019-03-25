@@ -18,7 +18,6 @@ class LevelSpacings : public metric {
 		int iterations = 0;
 	public:
 		void save(const vec &eigval,const mat &eigvec,const mat &A, int iterations);
-
 		void printResult();
 };
 

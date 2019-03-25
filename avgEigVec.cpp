@@ -4,6 +4,7 @@
 #include <string>
 #include "metric.h"
 #include "avgEigVec.h"
+#include "utils.h"
 using namespace std;
 using namespace arma;
 
@@ -22,8 +23,19 @@ void AvgEigVec::save(const vec &eigval,const mat &eigvec,const mat &A, int itera
 }
 
 void AvgEigVec::printResult(){
-	cout<<"Average Eigenvectors:\n";
+
+	ostream file(NULL);
+	char toAdd[] = "-AverageEigenVectors.csv";
+
+	filebuf fileBuffer;
+	string fileName = getDate();
+	fileName.append(getSeconds());
+	fileName.append(toAdd);
+	fileBuffer.open(fileName,ios_base::out);
+	file.rdbuf(&fileBuffer);
+
 	this->avgMat = this->avgMat / iterations;
-	this->avgMat.print();
+	this->avgMat.print(file);
+
 	return;
 }

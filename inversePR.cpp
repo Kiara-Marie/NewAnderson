@@ -8,11 +8,6 @@ using namespace std;
 using namespace arma;
 
 void InversePR::save(const vec &eigval,const mat &eigvec,const mat &A, int iterations){
-	/*if (this->avgMat.n_elem == 0){
-		this->avgMat = zeros(eigvec.n_rows, eigvec.n_cols);
-	} else if (this->avgMat.n_elem != eigvec.n_elem){
-		cerr<<"Inconsistent number of eigenvectors!\n";
-	}
 
 	if (this-> iterations == 0){
 		this->iterations = iterations;
@@ -20,17 +15,21 @@ void InversePR::save(const vec &eigval,const mat &eigvec,const mat &A, int itera
 		cerr<<"Inconsistent number of iterations!\n";
 	}
 
-	this->avgMat = this->avgMat + eigvec;
-	*/
+	// squared = eigvecs^2
+	mat squared = pow(eigvec,2);
+	// mags = |eigvecs|^2
+	mat mags = cumsum(squared);
+	// mags = |eigvecs|^4
+	mags = pow(mags,2);
+	double ipr = cumsum(mags,1);
+	ipr = 1/ipr;
+
+	
 	return;
 
 }
 
 void InversePR::printResult(){
-	/*
-	cout<<"Average Eigenvectors:\n";
-	this->avgMat = this->avgMat / iterations;
-	this->avgMat.print();
-	*/
+
 	return;
 }
