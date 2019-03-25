@@ -16,6 +16,8 @@ class LevelSpacings : public metric {
 		vector<double> spacings;
 		vec avgENPrime;
 		int iterations = 0;
+		void printS();
+		void printENPrime();
 	public:
 		void save(const vec &eigval,const mat &eigvec,const mat &A, int iterations);
 		void printResult();

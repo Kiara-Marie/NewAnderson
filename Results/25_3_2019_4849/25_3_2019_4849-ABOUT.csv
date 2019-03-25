@@ -1,0 +1,3 @@
+5, 3, 100, 10
+W, MAXT, numSites, iterations
+rand()/r**3, chosen from uniform random distribution between 0 and 3

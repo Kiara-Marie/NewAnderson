@@ -35,7 +35,7 @@ void AvgEigVec::printResult(){
 	file.rdbuf(&fileBuffer);
 
 	this->avgMat = this->avgMat / iterations;
-	this->avgMat.print(file);
+	this->avgMat.save(file,csv_ascii);
 
 	return;
 }

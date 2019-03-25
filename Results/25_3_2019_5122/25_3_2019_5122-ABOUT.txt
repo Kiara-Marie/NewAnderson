@@ -1,0 +1,6 @@
+5, 3, 1000, 10
+
+W, MAXT, numSites, iterations
+
+
+j_ij = rand()/r_ij**3, with rand() chosen from uniform random distribution between 0 and 3

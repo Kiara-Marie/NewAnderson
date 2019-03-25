@@ -36,6 +36,12 @@ void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int i
 }
 
 void LevelSpacings::printResult(){
+	this->printS();
+	this->printENPrime();
+	return;
+}
+
+void LevelSpacings::printS(){
 	ostream file(NULL);
 	char toAdd[] = "-spacings.csv";
 
@@ -50,18 +56,19 @@ void LevelSpacings::printResult(){
 			file<<spacings[i]<< ", ";
 	}
 
-	ostream ENFile(NULL);
-	char EtoAdd[] = "-EnPrime.txt";
-	filebuf fileBuffer2;
-	string eName = getDate();
-	eName.append(getSeconds());
-	eName.append(EtoAdd);
-	fileBuffer.open(eName,ios_base::out);
-	ENFile.rdbuf(&fileBuffer2);
+}
+
+void LevelSpacings::printENPrime(){
+	ostream file(NULL);
+	char toAdd[] = "-EnPrime.csv";
+	filebuf fileBuffer;
+	string fileName = getDate();
+	fileName.append(getSeconds());
+	fileName.append(toAdd);
+	fileBuffer.open(fileName,ios_base::out);
+	file.rdbuf(&fileBuffer);
 
 	this->avgENPrime = this->avgENPrime / iterations;
-	ENFile<<"Average En' between levels: \n";
-	avgENPrime.print(ENFile);
-
-	return;
+	//ENFile<<"Average En' between levels: \n";
+	avgENPrime.save(file,csv_ascii);
 }
