@@ -13,15 +13,15 @@ using namespace arma;
 
 class ComputeJ {
 	public:
-		enum Funs{uniformRandT,nnUniRandT};
-		ComputeJ(int MAXT,Funs fun);
+		enum Funs{uniRandT};
+		ComputeJ(int MAXT,Funs fun,int nnOnly);
 		double jFinder(int xi,int xj);
 		string methodDesc();
 	private:
 		Funs fun;
 		int MAXT;
-		double uniformRandTFun(int xi, int xj);
-		double nnUniRandTFun(int xi, int xj);
+		int nnOnly;
+		double uniRandTFun(int xi, int xj);
 };
 
 #endif
