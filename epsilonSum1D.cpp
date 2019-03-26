@@ -14,40 +14,19 @@
 #include "utils.h"
 #include "inversePR.h"
 #include "aboutRun.h"
+#include "computeJ.h"
 
 using namespace std;
 using namespace arma;
 
 int MAXT = 3;
 
-double findT(int xi, int xj){
-	double p = rand() % (MAXT + 1);
-	double r = xi - xj;
-	double j = p/(r*r*r);
-	if (j > 0.00001){
-		return j;
-	} else return 0;
-}
-double findTNN(int xi, int xj){
-	double p = rand() % (MAXT + 1);
-	double r = xi - xj;
-	double j = p/(r*r*r);
-	if (xi -xj > 1){
-		return 0;
-	}
-	if (j > 0.00001){
-		return p;
-	} else return 0;
-
-}
-
 int main(int argc, char** argv){
-	// set variables
+
+	// set variables, using command line args if applicable
 	double W = 5;
 	int numSites = 3;
 	int iterations = 10;
-	char jMethod[100];
-	sprintf(jMethod,"j_ij = rand()/r_ij**3, with rand() chosen from uniform random distribution between 0 and %d",MAXT);
 	if (argc > 1){
 		W = stoi(argv[1]);
 	}
@@ -57,18 +36,23 @@ int main(int argc, char** argv){
 	if (argc > 3){
 		iterations = stoi(argv[3]);
 	}
+	// how are we computing j?
 
+	ComputeJ jComputer(MAXT, ComputeJ::Funs::nnUniRandT);
+
+	// set up metrics
 	vector<metric*> metrics;
 	metrics.push_back(new LevelSpacings());
 	metrics.push_back(new AvgEigVec());
 	//metrics.push_back(new InversePR());
 	ResultFinder rf = ResultFinder(metrics);
 
+	string jMethod = jComputer.methodDesc();
 	AboutRun about = AboutRun(W,MAXT,numSites,iterations,jMethod);
 
 	for (int i = 0; i< iterations; i++ ){
 		mat A(numSites,numSites);
-		runSim1D(W, numSites,A,findT);
+		runSim1D(W, numSites,A,jComputer);
 		rf.saveResults(A, iterations);
 	}
 	about.printResult();
