@@ -10,6 +10,8 @@
 using namespace std;
 using namespace arma;
 
+// TODO: refactor this
+int stdDev = 1;
 ComputeJ::ComputeJ(int MAXT, Funs fun, int nnOnly){
 	this->MAXT = MAXT;
 	this->fun = fun;

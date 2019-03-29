@@ -19,6 +19,7 @@
 using namespace std;
 using namespace arma;
 
+// TODO: Refactor this
 int MAXT = 3;
 
 int main(int argc, char** argv){

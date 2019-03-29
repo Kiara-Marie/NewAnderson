@@ -9,6 +9,7 @@
 class ResultFinder{
 
 	private:
+		// metrics for this result finder
 		vector<metric*> metrics;
 	public:
 		ResultFinder(vector<metric*> metrics);

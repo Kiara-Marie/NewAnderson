@@ -18,7 +18,7 @@ AboutRun::AboutRun(int W,int MAXT,int numSites,int iterations,string jMethod){
 	this->jMethod = jMethod;
 }
 
-// should be called after construction only
+// should be called after constructor only
 void AboutRun::save(const vec &eigval,const mat &eigvec,const mat &A, int iterations){
 	if (this-> iterations != iterations){
 		cerr<<"Inconsistent number of iterations!\n";

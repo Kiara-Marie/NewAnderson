@@ -13,7 +13,8 @@ using namespace arma;
 
 class ComputeJ {
 	public:
-		enum Funs{uniRandT};
+		// TODO write better way of computing J
+		enum Funs{uniRandT,gaussRandT};
 		ComputeJ(int MAXT,Funs fun,int nnOnly);
 		double jFinder(int xi,int xj);
 		string methodDesc();

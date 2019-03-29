@@ -10,6 +10,7 @@ using namespace arma;
 
 class AvgEigVec : public metric {
 	private:
+		// number of iterations
 		int iterations = 0;
 		mat avgMat;
 	public:

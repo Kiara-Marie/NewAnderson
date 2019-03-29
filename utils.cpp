@@ -12,6 +12,7 @@
 using namespace std;
 using namespace arma;
 
+// get date string with underscores
 string getDate(){
 	time_t rawtime;
     struct tm * timeinfo;

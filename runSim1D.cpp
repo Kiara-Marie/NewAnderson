@@ -25,7 +25,11 @@ void runSim1D(double W, int length, mat& A, ComputeJ jComputer){
 	arma_rng::set_seed_random();
 
 	// set up
+<<<<<<< HEAD
 
+=======
+	// TODO: include W=0 case
+>>>>>>> 1482ccb... Maybe good now
 	vec energies = randu<vec>(length);
 	energies = energies * W;
 	vec toRmv = ones(length);

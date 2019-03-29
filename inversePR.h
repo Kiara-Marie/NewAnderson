@@ -7,7 +7,7 @@
 
 using namespace std;
 using namespace arma;
-
+// inverse participation ratio class
 class InversePR : public metric {
 	private:
 		vector<double> iprs;

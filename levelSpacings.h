@@ -11,6 +11,7 @@
 using namespace std;
 using namespace arma;
 
+// class to find level spacing statistics
 class LevelSpacings : public metric {
 	private:
 		vector<double> spacings;
