@@ -25,25 +25,23 @@ void runSim1D(double W, int length, mat& A, ComputeJ jComputer){
 	arma_rng::set_seed_random();
 
 	// set up
-<<<<<<< HEAD
-
-=======
-	// TODO: include W=0 case
->>>>>>> 1482ccb... Maybe good now
 	vec energies = randu<vec>(length);
-	energies = energies * W;
-	vec toRmv = ones(length);
-	toRmv = toRmv * W/2;
-	energies = energies - toRmv;
-	double eSum = sum(energies);
-	energies = energies *2;
+	if (W != 0){
+		energies = energies * W;
+		vec toRmv = ones(length);
+		toRmv = toRmv * W/2;
+		energies = energies - toRmv;
+		double eSum = sum(energies);
+		energies = energies *2;
 
-	toRmv = toRmv / W/2;
-	toRmv = toRmv * eSum;
-	energies = energies - toRmv;
-
-
+		toRmv = toRmv / W/2;
+		toRmv = toRmv * eSum;
+		energies = energies - toRmv;
+	} else {
+		energies.ones();
+	}
 	A.diag() = energies;
+	A.print();
 	double t = 1;
 	for (int xi = 0; xi<length;xi++){
 		for (int xj = 0; xj<length; xj++){
