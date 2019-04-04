@@ -11,7 +11,6 @@
 using namespace std;
 using namespace arma;
 
-// the existence of this file is bad but helpful
 string getDate();
 string getTime();
 string getSeconds();

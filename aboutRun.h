@@ -13,7 +13,6 @@ using namespace arma;
 
 class AboutRun : public metric {
 	private:
-		// onsite disorder
 		int W;
 		int MAXT;
 		int numSites;

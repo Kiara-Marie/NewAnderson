@@ -38,7 +38,7 @@ int main(int argc, char** argv){
 		iterations = stoi(argv[3]);
 	}
 	// how are we computing j?
-	
+
 	ComputeJ jComputer(MAXT, ComputeJ::Funs::uniRandT,1);
 
 	// set up metrics

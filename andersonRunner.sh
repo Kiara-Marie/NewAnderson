@@ -6,4 +6,4 @@
 #SBATCH --array=0-7
 
 module load armadillo
-./epsilonSum1D $SLURM_ARRAY_TASK_ID 1000 25
+./epsilonSum1D $SLURM_ARRAY_TASK_ID 5000 25

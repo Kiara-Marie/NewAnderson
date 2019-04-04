@@ -11,7 +11,6 @@ ResultFinder::ResultFinder(vector<metric*> metrics){
 	this->metrics = metrics;
 }
 
-// Save all the results
 void ResultFinder::saveResults(mat& A, int iterations){
 	vec eigval;
 	mat eigvec;
@@ -21,7 +20,6 @@ void ResultFinder::saveResults(mat& A, int iterations){
 	}
 }
 
-// Tell all metrics to print results
 void ResultFinder::printResults(){
 	for (unsigned int i = 0; i< this->metrics.size(); i++){
 		this->metrics[i]->printResult();

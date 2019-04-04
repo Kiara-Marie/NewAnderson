@@ -10,7 +10,6 @@
 using namespace std;
 using namespace arma;
 
-// compute level spacings
 void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int iterations){
 	if (this->avgENPrime.n_elem == 0){
 		this->avgENPrime = zeros(eigval.n_elem);

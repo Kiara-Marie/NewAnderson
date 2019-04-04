@@ -8,7 +8,6 @@
 using namespace std;
 using namespace arma;
 
-// add these eigenvectors to the summed matrix
 void AvgEigVec::save(const vec &eigval,const mat &eigvec,const mat &A, int iterations){
 	if (this->avgMat.n_elem == 0){
 		this->avgMat = zeros(eigvec.n_rows, eigvec.n_cols);
