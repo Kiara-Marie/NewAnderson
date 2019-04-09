@@ -19,8 +19,6 @@
 using namespace std;
 using namespace arma;
 
-// TODO: Refactor this
-int MAXT = 3;
 
 int main(int argc, char** argv){
 
@@ -28,6 +26,7 @@ int main(int argc, char** argv){
 	double W = 5;
 	int numSites = 3;
 	int iterations = 10;
+	int MAXT = 3;
 	if (argc > 1){
 		W = stoi(argv[1]);
 	}
@@ -36,6 +35,9 @@ int main(int argc, char** argv){
 	}
 	if (argc > 3){
 		iterations = stoi(argv[3]);
+	}
+	if (argc > 4){
+		MAXT = stoi(argv[4]);
 	}
 	// how are we computing j?
 
