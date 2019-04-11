@@ -38,7 +38,7 @@ void runSim1D(double W, int length, mat& A, ComputeJ jComputer){
 		toRmv = toRmv * eSum;
 		energies = energies - toRmv;
 	} else {
-		energies.zeros();
+		energies.ones();
 	}
 	A.diag() = energies;
 	double t = 1;

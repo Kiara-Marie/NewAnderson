@@ -11,7 +11,7 @@
 using namespace std;
 using namespace arma;
 
-long long unsigned int MAX_TO_SAVE = 16384;
+unsigned long MAX_TO_SAVE = 16384;
 void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int iterations){
 	if (this->avgENPrime.n_elem == 0){
 		this->avgENPrime = zeros(eigval.n_elem);
@@ -27,7 +27,7 @@ void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int i
 
 	double up;
 	double down;
-	unsigned int numToSave = min((eigval.n_elem-2), MAX_TO_SAVE);
+	unsigned int numToSave = eigval.n_elem-2;
 	for(unsigned int i = 1; i<numToSave; i++){
 		up = eigval(i+1) - eigval(i);
 		down = eigval(i) - eigval(i - 1);
@@ -53,8 +53,8 @@ void LevelSpacings::printS(){
 	fileName.append(toAdd);
 	fileBuffer.open(fileName,ios_base::out);
 	file.rdbuf(&fileBuffer);
-
-	for (unsigned int i = 1; i< spacings.size(); i++){
+	unsigned int numToSave = min(spacings.size(), MAX_TO_SAVE);
+	for (unsigned int i = 1; i< numToSave; i++){
 			file<<spacings[i]<< ", ";
 	}
 
