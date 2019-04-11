@@ -21,6 +21,7 @@ double ComputeJ::jFinder(int xi,int xj){
 	switch(this->fun){
 		case uniRandT: return uniRandTFun(xi,xj); break;
 		case gaussRandT: return gaussRandTFun(xi,xj); break;
+		case indUniRandT: return indUniRandTFun(xi,xj); break;
 	}
 	cerr<<"Things are very weird!!!!\n";
 	return 0;
@@ -34,6 +35,9 @@ string ComputeJ::methodDesc(){
 			break;
 		case gaussRandT:
 			sprintf(jMethod,"j_ij = rand()/r_ij**3, with rand() chosen from Gaussian random distribution with mean %d and std dev %d\n",this->MAXT,stdDev);
+			break;
+		case indUniRandT:
+			sprintf(jMethod,"j_ij = rand(), with rand() chosen from uniform random distribution between 0 and %d\n",this->MAXT);
 			break;
 	}
 	if (this->nnOnly){
@@ -67,4 +71,14 @@ double ComputeJ::gaussRandTFun(int xi, int xj){
 		return j;
 	}
 	return 0;
+}
+
+double ComputeJ::indUniRandTFun(int xi, int xj){
+	double p = rand() % (MAXT + 1);
+	double r = xi - xj;
+	double j = p;
+	if (this->nnOnly && (xi -xj > 1)){
+		return 0;
+	}
+	return j;
 }

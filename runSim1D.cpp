@@ -41,7 +41,6 @@ void runSim1D(double W, int length, mat& A, ComputeJ jComputer){
 		energies.zeros();
 	}
 	A.diag() = energies;
-	A.print();
 	double t = 1;
 	for (int xi = 0; xi<length;xi++){
 		for (int xj = 0; xj<length; xj++){
@@ -53,6 +52,7 @@ void runSim1D(double W, int length, mat& A, ComputeJ jComputer){
 			A(xj, xi) = t;
 			}
 		}
+	//A.print();
 	if(!is_symmetric(A)){
 		cerr<<"Matrix Not Hermitian!\n";
 	}

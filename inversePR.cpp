@@ -23,12 +23,12 @@ void InversePR::save(const vec &eigval,const mat &eigvec,const mat &A, int itera
 	cout<<"Squared matrix\n";
 	squared.print();
 	// mags = |eigvecs|^2
-	mat mags = cumsum(squared);
+	mat mags = cumsum(squared,1);
 	cout<<"Magnitude matrix\n";
 	mags.print();
 	// mags = |eigvecs|^4
 	mags = pow(mags,2);
-	mat cumulative = cumsum(mags,1);
+	mat cumulative = cumsum(mags,0);
 	cout<<"Cumulative sum of magnitude matrix\n";
 	cumulative.print();
 	double ipr = cumulative(0,0);
