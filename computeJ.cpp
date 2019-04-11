@@ -75,7 +75,6 @@ double ComputeJ::gaussRandTFun(int xi, int xj){
 
 double ComputeJ::indUniRandTFun(int xi, int xj){
 	double p = rand() % (MAXT + 1);
-	double r = xi - xj;
 	double j = p;
 	if (this->nnOnly && (xi -xj > 1)){
 		return 0;
