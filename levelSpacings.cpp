@@ -54,9 +54,13 @@ void LevelSpacings::printS(){
 	fileBuffer.open(fileName,ios_base::out);
 	file.rdbuf(&fileBuffer);
 	unsigned int numToSave = min(spacings.size(), MAX_TO_SAVE);
+	double rsf = 0;
 	for (unsigned int i = 1; i< numToSave; i++){
+			rsf += spacings[i];
 			file<<spacings[i]<< ", ";
 	}
+	double m = rsf/numToSave;
+	printf("Average spacing = %f\n", m );
 
 }
 
