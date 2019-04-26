@@ -22,6 +22,7 @@ double ComputeJ::jFinder(int xi,int xj){
 		case uniRandT: return uniRandTFun(xi,xj); break;
 		case gaussRandT: return gaussRandTFun(xi,xj); break;
 		case indUniRandT: return indUniRandTFun(xi,xj); break;
+		case constT: return constTFun(xi,xj); break;
 	}
 	cerr<<"Things are very weird!!!!\n";
 	return 0;
@@ -38,6 +39,9 @@ string ComputeJ::methodDesc(){
 			break;
 		case indUniRandT:
 			sprintf(jMethod,"j_ij = rand(), with rand() chosen from uniform random distribution between 0 and %d\n",this->MAXT);
+			break;
+		case constT:
+			sprintf(jMethod,"j_ij = %d\n",this->MAXT);
 			break;
 	}
 	if (this->nnOnly){
@@ -80,4 +84,8 @@ double ComputeJ::indUniRandTFun(int xi, int xj){
 		return 0;
 	}
 	return j;
+}
+
+double ComputeJ::constTFun(int xi, int xj){
+	return MAXT;
 }

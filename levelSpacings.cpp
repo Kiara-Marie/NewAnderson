@@ -28,7 +28,7 @@ void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int i
 	double up;
 	double down;
 	unsigned int numToSave = eigval.n_elem-2;
-	for(unsigned int i = 1; i<numToSave; i++){
+	for(unsigned int i = 1; i<=numToSave; i++){
 		up = eigval(i+1) - eigval(i);
 		down = eigval(i) - eigval(i - 1);
 		this->spacings.push_back(up);

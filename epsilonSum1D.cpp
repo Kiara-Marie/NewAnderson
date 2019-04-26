@@ -42,13 +42,13 @@ int main(int argc, char** argv){
 	}
 	// how are we computing j?
 
-	ComputeJ jComputer(MAXT, ComputeJ::Funs::indUniRandT,0);
+	ComputeJ jComputer(MAXT, ComputeJ::Funs::constT,1);
 
 	// set up metrics
 	vector<metric*> metrics;
 	metrics.push_back(new LevelSpacings());
 	metrics.push_back(new AvgEigVec());
-	metrics.push_back(new EnergyLevels());
+	//metrics.push_back(new EnergyLevels());
 	//metrics.push_back(new InversePR());
 	ResultFinder rf = ResultFinder(metrics);
 
