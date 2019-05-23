@@ -42,7 +42,7 @@ int main(int argc, char** argv){
 	}
 	// how are we computing j?
 
-	ComputeJ jComputer(MAXT, ComputeJ::Funs::constT,1);
+	ComputeJ jComputer(MAXT, ComputeJ::Funs::gaussRandT,1);
 
 	// set up metrics
 	vector<metric*> metrics;

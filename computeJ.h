@@ -11,10 +11,11 @@
 using namespace std;
 using namespace arma;
 
-class ComputeJ {
+class JComputerFactory {
 	public:
 		enum Funs{uniRandT,gaussRandT,indUniRandT,constT};
-		ComputeJ(int MAXT,Funs fun,int nnOnly);
+		JComputerFactory();
+		JComputer ComputeJ(int MAXT,Funs fun,int nnOnly);
 		double jFinder(int xi,int xj);
 		string methodDesc();
 	private:
