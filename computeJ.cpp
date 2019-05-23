@@ -23,6 +23,7 @@ double ComputeJ::jFinder(int xi,int xj){
 		case gaussRandT: return gaussRandTFun(xi,xj); break;
 		case indUniRandT: return indUniRandTFun(xi,xj); break;
 		case constT: return constTFun(xi,xj); break;
+		case lorentzT: return lorentzTFun(xi,xj); break;
 	}
 	cerr<<"Things are very weird!!!!\n";
 	return 0;
@@ -43,6 +44,8 @@ string ComputeJ::methodDesc(){
 		case constT:
 			sprintf(jMethod,"j_ij = %d\n",this->MAXT);
 			break;
+		case lorentzT:
+			sprintf(jMethod, "j_ij = lorentzian(e_i-e_j)/r**3, with t = %d, and gamma = %d \n %d / (1 + {(e_i - e_j)/%d}^2) / r_ij**3\n", this->MAXT,stdDev,this->MAXT,stdDev)
 	}
 	if (this->nnOnly){
 		strcat(jMethod,"j_ij on nearest neighbours only\n");
@@ -88,4 +91,10 @@ double ComputeJ::indUniRandTFun(int xi, int xj){
 
 double ComputeJ::constTFun(int xi, int xj){
 	return MAXT;
+}
+
+double ComputeJ::lorentzTFun(int xi, int xj){
+	double delta =  
+	MAXT / (1 + {/%d}^2) / r_ij**3
+
 }
