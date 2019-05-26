@@ -32,7 +32,6 @@ double Lorentz::jFinder(int xi,int xj){
 	double denom = 1 + (delta/this->gamma)*(delta/this->gamma);
 	double j = this->t / denom;
 	j = j/(r*r*r);
-	//cout<<"lorentz jfinder called\n";
 	return j;
 }
 

@@ -3,6 +3,8 @@
 #include <armadillo>
 #include <string>
 #include "jComputer.h"
+#include "findE.h"
+#include "runSim1D.h"
 using namespace arma;
 using namespace std;
 
@@ -21,25 +23,24 @@ int is_symmetric(const mat& A){
 }
 
 void runSim1D(double W, int length, mat& A, JComputer& jComputer){
-	// make random
-	arma_rng::set_seed_random();
 
-	// set up
-	vec energies = randu<vec>(length);
-	if (W != 0){
-		energies = energies * W;
-		vec toRmv = ones(length);
-		toRmv = toRmv * W/2;
-		energies = energies - toRmv;
-		double eSum = sum(energies);
-		energies = energies *2;
-
-		toRmv = toRmv / W/2;
-		toRmv = toRmv * eSum;
-		energies = energies - toRmv;
-	} else {
-		energies.zeros();
+	if (W==0){
+	cerr<<"W was zero\n";
 	}
+
+	vec energies = zeros(length);
+	getEnergies(length, energies, W);
+
+	vec toRmv = ones(length);
+	toRmv = toRmv * W/2;
+	energies = energies - toRmv;
+	double eSum = sum(energies);
+	energies = energies *2;
+
+	toRmv = toRmv / W/2;
+	toRmv = toRmv * eSum;
+	energies = energies - toRmv;
+
 	A.diag() = energies;
 	if (jComputer.needsEnergy){
 		jComputer.additionalInfo(energies);
@@ -60,4 +61,26 @@ void runSim1D(double W, int length, mat& A, JComputer& jComputer){
 		cerr<<"Matrix Not Hermitian!\n";
 	}
 	return;
+}
+
+void getEnergies(int length, vec& energies, double W){
+	// make random
+	arma_rng::set_seed_random();
+
+	// set up
+	vec nValues = randu<vec>(length) * W;
+	nValues.transform( [](double val) { return round(val); } );
+
+	 // generate a vector of values between 0 and 1, then multiply element-wise
+	 // by n
+	vec lValues = randu<vec>(length) % nValues ;
+	lValues.transform( [](double val) { return round(val); } );
+
+	for (int i = 0; i < length; i++){
+		char nc = (char) nValues(i);
+		char lc = (char) lValues(i);
+
+		energies(i) = bindingEnergy(nc,lc);
+	}
+
 }
