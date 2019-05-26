@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <ostream>
+#include <sstream>
 #include "lorentz.h"
 
 using namespace std;
@@ -14,7 +15,8 @@ Lorentz::Lorentz(int arg1,int nnOnly, int arg3) : JComputer(arg1,nnOnly, arg3) {
 
 	this->t = arg1;
 	this->gamma = arg3;
-	this->desc = "j_ij = lorentzian(e_i-e_j)/r**3, with t = %d, and gamma = %d \n %d / (1 + {(e_i - e_j)/%d}^2) / r_ij**3\n", this->t,this->gamma,this->t,this->gamma);
+	this->desc<<"j_ij = lorentzian(e_i-e_j)/r**3, with t = "<<this->t<< " and gamma = "<<this->gamma;
+	this->desc<<"\n"<< this->t<< "/ (1 + {(e_i - e_j)/"<<this->gamma<<"}^2) / r_ij**3\n";
 	this->needsEnergy = 1;
 }
 double Lorentz::jFinder(int xi,int xj){
@@ -23,8 +25,8 @@ double Lorentz::jFinder(int xi,int xj){
 	}
 	double delta = this->info(xi) - this->info(xj);
 	double r = xi - xj;
-	double denom = 1 + (delta/stdDev)*(delta/stdDev);
-	double j = MAXT / denom;
+	double denom = 1 + (delta/this->gamma)*(delta/this->gamma);
+	double j = this->t / denom;
 	j = j/(r*r*r);
 	return j;
 }

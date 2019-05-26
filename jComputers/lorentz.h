@@ -6,6 +6,7 @@
 #include <string>
 #include <fstream>
 #include <ostream>
+#include <sstream>
 #include "../jComputer.h"
 
 using namespace std;

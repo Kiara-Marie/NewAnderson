@@ -20,7 +20,7 @@ int is_symmetric(const mat& A){
 	return 1;
 }
 
-void runSim1D(double W, int length, mat& A, JComputer jComputer){
+void runSim1D(double W, int length, mat& A, JComputer& jComputer){
 	// make random
 	arma_rng::set_seed_random();
 

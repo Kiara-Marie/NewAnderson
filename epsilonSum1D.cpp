@@ -12,8 +12,8 @@
 #include "metrics/utils.h"
 #include "metrics/inversePR.h"
 #include "metrics/aboutRun.h"
-#include "JComputer.h"
-#include "JComputerFactory.h"
+#include "jComputer.h"
+#include "jComputerFactory.h"
 #include "metrics/energyLevels.h"
 
 using namespace std;
@@ -41,7 +41,7 @@ int main(int argc, char** argv){
 	}
 	// how are we computing j?
 
-	JComputerFactory::Funs fun = JComputerFactory::Funs::LorentzT;
+	JComputerFactory::Funs fun = JComputerFactory::Funs::lorentzT;
 	double t = 10;
 	double gamma = 1;
 	int nnOnly = 0;
