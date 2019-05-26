@@ -4,21 +4,23 @@
 #include <string>
 #include <fstream>
 #include <ostream>
-#include "utils.h"
 #include "lorentz.h"
 
 using namespace std;
 using namespace arma;
 
 
-Lorentz::Lorentz(int arg1,int nnOnly, int arg3){
-	this->super(arg1, nnOnly, arg3);
+Lorentz::Lorentz(int arg1,int nnOnly, int arg3) : JComputer(arg1,nnOnly, arg3) {
+
 	this->t = arg1;
 	this->gamma = arg3;
-
+	this->desc = "j_ij = lorentzian(e_i-e_j)/r**3, with t = %d, and gamma = %d \n %d / (1 + {(e_i - e_j)/%d}^2) / r_ij**3\n", this->t,this->gamma,this->t,this->gamma);
+	this->needsEnergy = 1;
 }
 double Lorentz::jFinder(int xi,int xj){
-	this->super();
+	if (this->nnOnly && (xi -xj > 1)){
+	return 0;
+	}
 	double delta = this->info(xi) - this->info(xj);
 	double r = xi - xj;
 	double denom = 1 + (delta/stdDev)*(delta/stdDev);
@@ -26,9 +28,7 @@ double Lorentz::jFinder(int xi,int xj){
 	j = j/(r*r*r);
 	return j;
 }
-string methodDesc();
-void additionalInfo(vec info);
 
-
-
-#endif
+void Lorentz::additionalInfo(vec info){
+	this->info = info;
+}

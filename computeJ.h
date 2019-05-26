@@ -6,7 +6,7 @@
 #include <string>
 #include <fstream>
 #include <ostream>
-#include "utils.h"
+#include "metrics/utils.h"
 
 using namespace std;
 using namespace arma;

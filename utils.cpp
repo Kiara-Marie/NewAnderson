@@ -6,9 +6,9 @@
 #include <fstream>
 #include <ostream>
 #include <ctime>
-#include "metric.h"
-#include "utils.h"
-#include "inversePR.h"
+#include "metrics/metric.h"
+#include "metrics/utils.h"
+#include "metrics/inversePR.h"
 using namespace std;
 using namespace arma;
 

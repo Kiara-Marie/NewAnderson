@@ -6,8 +6,7 @@
 #include <string>
 #include <fstream>
 #include <ostream>
-#include "utils.h"
-#include "JComputer.h"
+#include "../jComputer.h"
 
 using namespace std;
 using namespace arma;

@@ -2,8 +2,7 @@
 #include <math.h>
 #include <armadillo>
 #include <string>
-#include "metric.h"
-#include "levelSpacings.h"
+#include "jComputer.h"
 using namespace std;
 using namespace arma;
 
@@ -16,8 +15,12 @@ JComputer::JComputer(int arg1,int nnOnly, int arg3){
 void JComputer::additionalInfo(vec info){
 }
 
-double JComputer::JFinder(int xi, int xj){
-	if (this->nnOnly && (xi -xj > 1)){
-	return 0;
+
+string JComputer::methodDesc(){
+	char jMethod[180];
+	sprintf(jMethod,"%s",this->desc);
+	if (this->nnOnly){
+		strcat(jMethod,"j_ij on nearest neighbours only\n");
 	}
+	return jMethod;
 }

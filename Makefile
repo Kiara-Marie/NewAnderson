@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -Wall -g  -O2 -larmadillo -std=c++14
-objects = avgEigVec.o inversePR.o levelSpacings.o  metric.o resultFinder.o \
-			runSim1D.o utils.o aboutRun.o computeJ.o energyLevels.o
+objects = metrics/avgEigVec.o metrics/inversePR.o metrics/levelSpacings.o  metrics/metric.o jComputer.o resultFinder.o \
+			jComputerFactory.o jComputers/lorentz.o runSim1D.o metrics/utils.o metrics/aboutRun.o metrics/energyLevels.o
 epsilonSum1D: $(objects)
 	$(CXX) epsilonSum1D.cpp $(CXXFLAGS) -o epsilonSum1D $(objects)
 clean:

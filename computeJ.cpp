@@ -5,7 +5,7 @@
 #include <fstream>
 #include <ostream>
 #include <random>
-#include "utils.h"
+#include "metrics/utils.h"
 #include "computeJ.h"
 
 using namespace std;
@@ -94,7 +94,7 @@ double ComputeJ::constTFun(int xi, int xj){
 }
 
 double ComputeJ::lorentzTFun(int xi, int xj){
-	double delta =  
+	double delta =
 	MAXT / (1 + {/%d}^2) / r_ij**3
 
 }

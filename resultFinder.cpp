@@ -2,7 +2,7 @@
 #include <math.h>
 #include <armadillo>
 #include <string>
-#include "metric.h"
+#include "metrics/metric.h"
 #include "resultFinder.h"
 using namespace std;
 using namespace arma;

@@ -4,7 +4,7 @@
 #include <math.h>
 #include <armadillo>
 #include <string>
-#include "metric.h"
+#include "metrics/metric.h"
 
 class ResultFinder{
 

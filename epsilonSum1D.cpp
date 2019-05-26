@@ -4,18 +4,17 @@
 #include <string>
 #include <fstream>
 #include <ostream>
-#include "sixMat.h"
-#include "runSim.h"
-#include "metric.h"
-#include "levelSpacings.h"
+#include "metrics/metric.h"
+#include "metrics/levelSpacings.h"
 #include "resultFinder.h"
 #include "runSim1D.h"
-#include "avgEigVec.h"
-#include "utils.h"
-#include "inversePR.h"
-#include "aboutRun.h"
-#include "computeJ.h"
-#include "energyLevels.h"
+#include "metrics/avgEigVec.h"
+#include "metrics/utils.h"
+#include "metrics/inversePR.h"
+#include "metrics/aboutRun.h"
+#include "JComputer.h"
+#include "JComputerFactory.h"
+#include "metrics/energyLevels.h"
 
 using namespace std;
 using namespace arma;
@@ -42,8 +41,13 @@ int main(int argc, char** argv){
 	}
 	// how are we computing j?
 
-	ComputeJ jComputer(MAXT, ComputeJ::Funs::gaussRandT,1);
+	JComputerFactory::Funs fun = JComputerFactory::Funs::LorentzT;
+	double t = 10;
+	double gamma = 1;
+	int nnOnly = 0;
 
+	JComputerFactory factory = JComputerFactory();
+	JComputer jComputer = factory.computeJ(fun, t,nnOnly,gamma);
 	// set up metrics
 	vector<metric*> metrics;
 	metrics.push_back(new LevelSpacings());

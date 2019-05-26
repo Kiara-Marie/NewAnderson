@@ -2,7 +2,7 @@
 #include <math.h>
 #include <armadillo>
 #include <string>
-#include "computeJ.h"
+#include "jComputer.h"
 using namespace arma;
 using namespace std;
 
@@ -20,7 +20,7 @@ int is_symmetric(const mat& A){
 	return 1;
 }
 
-void runSim1D(double W, int length, mat& A, ComputeJ jComputer){
+void runSim1D(double W, int length, mat& A, JComputer jComputer){
 	// make random
 	arma_rng::set_seed_random();
 
@@ -41,15 +41,18 @@ void runSim1D(double W, int length, mat& A, ComputeJ jComputer){
 		energies.zeros();
 	}
 	A.diag() = energies;
-	double t = 1;
+	if (jComputer.needsEnergy){
+		jComputer.additionalInfo(energies);
+	}
+	double j = 1;
 	for (int xi = 0; xi<length;xi++){
 		for (int xj = 0; xj<length; xj++){
 			if(xi == xj) {
 				continue;
 			}
-			t = jComputer.jFinder(xi,xj);
-			A(xi, xj) = t;
-			A(xj, xi) = t;
+			j = jComputer.jFinder(xi,xj);
+			A(xi, xj) = j;
+			A(xj, xi) = j;
 			}
 		}
 	//A.print();

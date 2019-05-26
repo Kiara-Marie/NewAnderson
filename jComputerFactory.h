@@ -6,7 +6,8 @@
 #include <string>
 #include <fstream>
 #include <ostream>
-#include "utils.h"
+#include "jComputer.h"
+#include "jComputers/lorentz.h"
 
 using namespace std;
 using namespace arma;
@@ -14,8 +15,7 @@ using namespace arma;
 class JComputerFactory {
 	public:
 		enum Funs{uniRandT,gaussRandT,indUniRandT,constT,lorentzT};
-		JComputerFactory();
-		JComputer ComputeJ(Funs fun, int arg1,int nnOnly, int arg3);
+		JComputer computeJ(Funs fun, int arg1,int nnOnly, int arg3);
 };
 
 #endif
