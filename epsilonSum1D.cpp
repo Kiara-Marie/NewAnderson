@@ -13,7 +13,7 @@
 #include "metrics/inversePR.h"
 #include "metrics/aboutRun.h"
 #include "jComputer.h"
-#include "jComputerFactory.h"
+#include "jComputers/lorentz.h"
 #include "metrics/energyLevels.h"
 
 using namespace std;
@@ -41,13 +41,11 @@ int main(int argc, char** argv){
 	}
 	// how are we computing j?
 
-	JComputerFactory::Funs fun = JComputerFactory::Funs::lorentzT;
 	double t = 10;
 	double gamma = 1;
 	int nnOnly = 0;
 
-	JComputerFactory factory = JComputerFactory();
-	JComputer jComputer = factory.computeJ(fun, t,nnOnly,gamma);
+	Lorentz jComputer = Lorentz(t,nnOnly,gamma);
 	// set up metrics
 	vector<metric*> metrics;
 	metrics.push_back(new LevelSpacings());

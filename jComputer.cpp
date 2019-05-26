@@ -12,7 +12,6 @@ JComputer::JComputer(int arg1,int nnOnly, int arg3){
 }
 
 JComputer::~JComputer(){
-	delete &this->desc;
 }
 
 JComputer::JComputer( const JComputer& anotherJComputer ){
@@ -26,12 +25,7 @@ double JComputer::jFinder(int xi, int xj){
 }
 
 string JComputer::methodDesc(){
-	char jMethod[180];
-	sprintf(jMethod,"%s",this->desc.str());
-	if (this->nnOnly){
-		strcat(jMethod,"j_ij on nearest neighbours only\n");
-	}
-	return jMethod;
+	return this->desc.str();
 }
 
 void JComputer::additionalInfo(vec info){
