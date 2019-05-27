@@ -59,6 +59,7 @@ int main(int argc, char** argv){
 
 	for (int i = 0; i< iterations; i++ ){
 		mat A(numSites,numSites);
+		A.print("A: \n");
 		runSim1D(W, numSites,A,jComputer);
 		rf.saveResults(A, iterations);
 	}

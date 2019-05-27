@@ -31,16 +31,6 @@ void runSim1D(double W, int length, mat& A, JComputer& jComputer){
 	vec energies = zeros(length);
 	getEnergies(length, energies, W);
 
-	vec toRmv = ones(length);
-	toRmv = toRmv * W/2;
-	energies = energies - toRmv;
-	double eSum = sum(energies);
-	energies = energies *2;
-
-	toRmv = toRmv / W/2;
-	toRmv = toRmv * eSum;
-	energies = energies - toRmv;
-
 	A.diag() = energies;
 	if (jComputer.needsEnergy){
 		jComputer.additionalInfo(energies);
@@ -65,7 +55,7 @@ void runSim1D(double W, int length, mat& A, JComputer& jComputer){
 
 void getEnergies(int length, vec& energies, double W){
 	// make random
-	arma_rng::set_seed_random();
+	//arma_rng::set_seed_random();
 
 	// set up
 	vec nValues = randu<vec>(length) * W;
@@ -74,7 +64,7 @@ void getEnergies(int length, vec& energies, double W){
 	 // generate a vector of values between 0 and 1, then multiply element-wise
 	 // by n
 	vec lValues = randu<vec>(length) % nValues ;
-	lValues.transform( [](double val) { return round(val); } );
+	lValues.transform( [](double val) { return floor(val); } );
 
 	for (int i = 0; i < length; i++){
 		char nc = (char) nValues(i);
@@ -82,5 +72,10 @@ void getEnergies(int length, vec& energies, double W){
 
 		energies(i) = bindingEnergy(nc,lc);
 	}
+
+	nValues.print("n values\n");
+	lValues.print("l values\n");
+	energies.print("energies\n");
+
 
 }
