@@ -4,9 +4,11 @@
 #include <string>
 #include "jComputer.h"
 #include "findE.h"
-#include "runSim1D.h"
+#include "runSimA.h"
 using namespace arma;
 using namespace std;
+
+double MAXJUMP = 1;
 
 int is_symmetric(const mat& A){
 	if (A.n_rows != A.n_cols){
@@ -22,7 +24,7 @@ int is_symmetric(const mat& A){
 	return 1;
 }
 
-void runSim1D(double W, int length, mat& A, JComputer& jComputer){
+void runSimA(double W, int length, mat& A, JComputer& jComputer){
 
 	if (W==0){
 	cerr<<"W was zero\n";
@@ -70,8 +72,10 @@ void getEnergies(int length, vec& energies, double W){
 		char nc = (char) nValues(i);
 		char lc = (char) lValues(i);
 
+		double delta = round (rand() * MAXJUMP);
+
 		double lower = bindingEnergy(nc,lc);
-		double upper = bindingEnergy(nc+1, lc+1);
+		double upper = bindingEnergy(nc+delta, lc+1);
 		energies(i) = upper - lower;
 	}
 

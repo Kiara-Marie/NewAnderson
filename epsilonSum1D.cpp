@@ -41,11 +41,10 @@ int main(int argc, char** argv){
 	}
 	// how are we computing j?
 
-	double t = 10;
 	double gamma = 1;
 	int nnOnly = 0;
 
-	Lorentz jComputer = Lorentz(t,nnOnly,gamma);
+	Lorentz jComputer = Lorentz(MAXT,nnOnly,gamma);
 	// set up metrics
 	vector<metric*> metrics;
 	metrics.push_back(new LevelSpacings());
@@ -59,7 +58,7 @@ int main(int argc, char** argv){
 
 	for (int i = 0; i< iterations; i++ ){
 		mat A(numSites,numSites);
-		A.print("A: \n");
+		//A.print("A: \n");
 		runSim1D(W, numSites,A,jComputer);
 		rf.saveResults(A, iterations);
 	}
