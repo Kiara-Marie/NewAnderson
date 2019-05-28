@@ -15,6 +15,8 @@
 #include "jComputer.h"
 #include "jComputers/lorentz.h"
 #include "metrics/energyLevels.h"
+#include "runSimA.h"
+#include "runSimSimple.h"
 
 using namespace std;
 using namespace arma;
@@ -59,7 +61,7 @@ int main(int argc, char** argv){
 	for (int i = 0; i< iterations; i++ ){
 		mat A(numSites,numSites);
 		//A.print("A: \n");
-		runSim1D(W, numSites,A,jComputer);
+		runSimA(W, numSites,A,jComputer);
 		rf.saveResults(A, iterations);
 	}
 	about.printResult();

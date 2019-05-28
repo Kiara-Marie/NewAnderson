@@ -2,27 +2,15 @@
 #include <math.h>
 #include <armadillo>
 #include <string>
+#include <random>
 #include "jComputer.h"
 #include "findE.h"
 #include "runSimA.h"
+#include "runSim1D.h"
 using namespace arma;
 using namespace std;
 
 double MAXJUMP = 1;
-
-int is_symmetric(const mat& A){
-	if (A.n_rows != A.n_cols){
-		return 0;
-	}
-	for (unsigned int i = 0; i< A.n_rows;i++){
-		for (unsigned int j = 0; j<A.n_cols;j++){
-			if(A(i,j) != A(j,i)){
-				return 0;
-			}
-		}
-	}
-	return 1;
-}
 
 void runSimA(double W, int length, mat& A, JComputer& jComputer){
 
@@ -31,7 +19,7 @@ void runSimA(double W, int length, mat& A, JComputer& jComputer){
 	}
 
 	vec energies = zeros(length);
-	getEnergies(length, energies, W);
+	getEnergiesA(length, energies, W);
 
 	A.diag() = energies;
 	if (jComputer.needsEnergy){
@@ -55,13 +43,15 @@ void runSimA(double W, int length, mat& A, JComputer& jComputer){
 	return;
 }
 
-void getEnergies(int length, vec& energies, double W){
+void getEnergiesA(int length, vec& energies, double W){
 	// make random
-	//arma_rng::set_seed_random();
+	arma_rng::set_seed_random();
+	default_random_engine generator;
+	uniform_int_distribution<int> distribution(1,MAXJUMP);
 
 	// set up
 	vec nValues = randu<vec>(length) * W;
-	nValues.transform( [](double val) { return round(val); } );
+	nValues.transform( [](double val) { return ceil(val); } );
 
 	 // generate a vector of values between 0 and 1, then multiply element-wise
 	 // by n
@@ -72,7 +62,7 @@ void getEnergies(int length, vec& energies, double W){
 		char nc = (char) nValues(i);
 		char lc = (char) lValues(i);
 
-		double delta = round (rand() * MAXJUMP);
+		double delta =  distribution(generator);
 
 		double lower = bindingEnergy(nc,lc);
 		double upper = bindingEnergy(nc+delta, lc+1);

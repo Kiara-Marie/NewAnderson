@@ -5,14 +5,11 @@
 #include <armadillo>
 #include <string>
 #include "jComputer.h"
+#include "runSim1D.h"
 
 using namespace std;
 using namespace arma;
 
 void runSimA(double W, int length, mat& A, JComputer& jComputer);
-
-double findT(int xi, int xj);
-int is_symmetric(const mat& A);
-double energyLambda(double n);
-void getEnergies(int length, vec& energies, double W);
+void getEnergiesA(int length, vec& energies, double W);
 #endif

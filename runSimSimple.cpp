@@ -3,24 +3,13 @@
 #include <armadillo>
 #include <string>
 #include "jComputer.h"
+#include "runSim1D.h"
+#include "runSimSimple.h"
+
 using namespace arma;
 using namespace std;
 
-int is_symmetric(const mat& A){
-	if (A.n_rows != A.n_cols){
-		return 0;
-	}
-	for (unsigned int i = 0; i< A.n_rows;i++){
-		for (unsigned int j = 0; j<A.n_cols;j++){
-			if(A(i,j) != A(j,i)){
-				return 0;
-			}
-		}
-	}
-	return 1;
-}
-
-void runSim1D(double W, int length, mat& A, JComputer& jComputer){
+void runSimSimple(double W, int length, mat& A, JComputer& jComputer){
 	// make random
 	arma_rng::set_seed_random();
 

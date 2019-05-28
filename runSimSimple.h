@@ -1,17 +1,17 @@
-#ifndef _RUNSIM1D_H_
-#define _RUNSIM1D_H_
+#ifndef _RUNSIMSIMPLE_H_
+#define _RUNSIMSIMPLE_H_
 #include <iostream>
 #include <math.h>
 #include <armadillo>
 #include <string>
 #include "jComputer.h"
+#include "runSim1D.h"
 
 using namespace std;
 using namespace arma;
 
-void runSim1D(double W, int length, mat& A, JComputer& jComputer);
+void runSimSimple(double W, int length, mat& A, JComputer& jComputer);
 
 double findT(int xi, int xj);
-int is_symmetric(const mat& A);
 
 #endif

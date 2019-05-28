@@ -55,11 +55,11 @@ void runSim1D(double W, int length, mat& A, JComputer& jComputer){
 
 void getEnergies(int length, vec& energies, double W){
 	// make random
-	//arma_rng::set_seed_random();
+	arma_rng::set_seed_random();
 
 	// set up
 	vec nValues = randu<vec>(length) * W;
-	nValues.transform( [](double val) { return round(val); } );
+	nValues.transform( [](double val) { return ceil(val); } );
 
 	 // generate a vector of values between 0 and 1, then multiply element-wise
 	 // by n
@@ -70,9 +70,7 @@ void getEnergies(int length, vec& energies, double W){
 		char nc = (char) nValues(i);
 		char lc = (char) lValues(i);
 
-		double lower = bindingEnergy(nc,lc);
-		double upper = bindingEnergy(nc+1, lc+1);
-		energies(i) = upper - lower;
+		energies(i) = bindingEnergy(nc,lc);
 	}
 
 	//nValues.print("n values\n");
