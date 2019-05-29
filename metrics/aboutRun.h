@@ -18,8 +18,9 @@ class AboutRun : public metric {
 		int numSites;
 		int iterations;
 		string jMethod;
+		string eMethod
 	public:
-		AboutRun(int W,int MAXT,int numSites,int iterations,string jMethod);
+		AboutRun(int W,int MAXT,int numSites,int iterations,string jMethod, string eMethod);
 		void save(const vec &eigval,const mat &eigvec,const mat &A, int iterations);
 		void printResult();
 

@@ -56,7 +56,7 @@ int main(int argc, char** argv){
 	ResultFinder rf = ResultFinder(metrics);
 
 	string jMethod = jComputer.methodDesc();
-	AboutRun about = AboutRun(W,MAXT,numSites,iterations,jMethod);
+	AboutRun about = AboutRun(W,MAXT,numSites,iterations,jMethod,"Using methodA\n");
 
 	for (int i = 0; i< iterations; i++ ){
 		mat A(numSites,numSites);

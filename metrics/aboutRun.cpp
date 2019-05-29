@@ -10,12 +10,13 @@
 using namespace std;
 using namespace arma;
 
-AboutRun::AboutRun(int W,int MAXT,int numSites,int iterations,string jMethod){
+AboutRun::AboutRun(int W,int MAXT,int numSites,int iterations,string jMethod,string eMethod){
 	this->W = W;
 	this->MAXT = MAXT;
 	this->numSites = numSites;
 	this->iterations = iterations;
 	this->jMethod = jMethod;
+	this->eMethod = eMethod;
 }
 
 // should be called after construction only
@@ -37,6 +38,7 @@ void AboutRun::printResult(){
 	fileBuffer.open(fileName,ios_base::out);
 	file.rdbuf(&fileBuffer);
 
+	file<<this->eMethod;
 	file<<this->W<<", "<<this->MAXT<<", "<<this->numSites<<", "<<this->iterations<<"\n";
 	file<<"W"<<", "<<"MAXT"<<", "<<"numSites"<<", "<<"iterations"<<"\n"<<"\n";
 	file<<this->jMethod;
