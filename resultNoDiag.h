@@ -1,19 +1,18 @@
-#ifndef _RESULTFINDER_H_
-#define _RESULTFINDER_H_
+#ifndef _RESULTNODIAG_H_
+#define _RESULTNODIAGH_
 #include <iostream>
 #include <math.h>
 #include <armadillo>
 #include <string>
 #include "metrics/metric.h"
 
-class ResultFinder{
+class ResultNoDiag: public ResultFinder{
 
-	protected:
+	private:
 		vector<metric*> metrics;
 	public:
-		explicit ResultFinder(vector<metric*> metrics);
+		ResultNoDiag(vector<metric*> metrics);
 		void saveResults(mat& A, int iterations);
-		virtual void printResults();
 };
 
 #endif

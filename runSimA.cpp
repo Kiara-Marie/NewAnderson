@@ -51,7 +51,7 @@ void getEnergiesA(int length, vec& energies, double W){
 
 	// set up
 	vec nValues = randu<vec>(length) * W;
-	nValues.transform( [](double val) { return ceil(val); } );
+	nValues.transform( [](double val) { return ceil(val) + 1; } );
 
 	 // generate a vector of values between 0 and 1, then multiply element-wise
 	 // by n
@@ -66,7 +66,10 @@ void getEnergiesA(int length, vec& energies, double W){
 
 		double lower = bindingEnergy(nc,lc);
 		double upper = bindingEnergy(nc+delta, lc+1);
-		energies(i) = upper - lower;
+		if ((lower - upper) > 2){
+			cout<<"lower = "<<lower<<", upper = "<<upper<<", n ="<<nValues(i)<<", delta = "<<delta<<"\n";
+		}
+		energies(i) = lower - upper;
 	}
 
 	//nValues.print("n values\n");

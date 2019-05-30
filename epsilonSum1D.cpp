@@ -17,6 +17,7 @@
 #include "metrics/energyLevels.h"
 #include "runSimA.h"
 #include "runSimSimple.h"
+#include "resultNoDiag.h"
 
 using namespace std;
 using namespace arma;
@@ -53,15 +54,15 @@ int main(int argc, char** argv){
 	metrics.push_back(new AvgEigVec());
 	//metrics.push_back(new EnergyLevels());
 	//metrics.push_back(new InversePR());
-	ResultFinder rf = ResultFinder(metrics);
+	ResultNoDiag rf = ResultNoDiag(metrics);
 
 	string jMethod = jComputer.methodDesc();
-	AboutRun about = AboutRun(W,MAXT,numSites,iterations,jMethod,"Using methodA\n");
+	AboutRun about = AboutRun(W,MAXT,numSites,iterations,jMethod,"Using  methodA\n");
 
 	for (int i = 0; i< iterations; i++ ){
 		mat A(numSites,numSites);
-		//A.print("A: \n");
 		runSimA(W, numSites,A,jComputer);
+		//A.print("A: \n");
 		rf.saveResults(A, iterations);
 	}
 	about.printResult();
