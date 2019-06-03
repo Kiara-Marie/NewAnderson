@@ -10,7 +10,7 @@
 using namespace std;
 using namespace arma;
 
-AboutRun::AboutRun(int W,int MAXT,int numSites,int iterations,string jMethod,string eMethod){
+AboutRun::AboutRun(int W,double MAXT,int numSites,int iterations,string jMethod,string eMethod){
 	this->W = W;
 	this->MAXT = MAXT;
 	this->numSites = numSites;

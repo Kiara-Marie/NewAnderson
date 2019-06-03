@@ -7,7 +7,7 @@ using namespace std;
 using namespace arma;
 
 
-JComputer::JComputer(int arg1,int nnOnly, int arg3){
+JComputer::JComputer(double arg1,int nnOnly, int arg3){
 	this->nnOnly = nnOnly;
 }
 

@@ -19,7 +19,7 @@ class Lorentz : public JComputer {
 		double gamma;
 
 	public:
-		Lorentz(int arg1,int nnOnly, int arg3);
+		Lorentz(double arg1,int nnOnly, int arg3);
 		double jFinder(int xi,int xj);
 		void additionalInfo(vec info);
 

@@ -14,13 +14,13 @@ using namespace arma;
 class AboutRun : public metric {
 	private:
 		int W;
-		int MAXT;
+		double MAXT;
 		int numSites;
 		int iterations;
 		string jMethod;
 		string eMethod;
 	public:
-		AboutRun(int W,int MAXT,int numSites,int iterations,string jMethod, string eMethod);
+		AboutRun(int W,double MAXT,int numSites,int iterations,string jMethod, string eMethod);
 		void save(const vec &eigval,const mat &eigvec,const mat &A, int iterations);
 		void printResult();
 

@@ -14,7 +14,7 @@ using namespace arma;
 class JComputer {
 	public:
 		int needsEnergy = 0;
-		explicit JComputer(int arg1,int nnOnly, int arg3);
+		explicit JComputer(double arg1,int nnOnly, int arg3);
 		~JComputer();
 		JComputer( const JComputer& anotherJComputer );
 		virtual double jFinder(int xi,int xj);

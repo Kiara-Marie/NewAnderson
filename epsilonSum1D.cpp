@@ -29,7 +29,7 @@ int main(int argc, char** argv){
 	double W = 5;
 	int numSites = 3;
 	int iterations = 10;
-	int MAXT = 3;
+	double MAXT = 3;
 	if (argc > 1){
 		W = stoi(argv[1]);
 	}
@@ -54,13 +54,12 @@ int main(int argc, char** argv){
 	metrics.push_back(new AvgEigVec());
 	//metrics.push_back(new EnergyLevels());
 	//metrics.push_back(new InversePR());
-	ResultNoDiag rf = ResultNoDiag(metrics);
+	ResultFinder rf = ResultFinder(metrics);
 
 	string jMethod = jComputer.methodDesc();
 	AboutRun about = AboutRun(W,MAXT,numSites,iterations,jMethod,"Using  methodA\n");
-
+	mat A(numSites,numSites);
 	for (int i = 0; i< iterations; i++ ){
-		mat A(numSites,numSites);
 		runSimA(W, numSites,A,jComputer);
 		//A.print("A: \n");
 		rf.saveResults(A, iterations);

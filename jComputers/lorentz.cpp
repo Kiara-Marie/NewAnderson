@@ -11,7 +11,7 @@ using namespace std;
 using namespace arma;
 
 
-Lorentz::Lorentz(int arg1,int nnOnly, int arg3) : JComputer(arg1,nnOnly, arg3) {
+Lorentz::Lorentz(double arg1,int nnOnly, int arg3) : JComputer(arg1,nnOnly, arg3) {
 	// avg distance from one particle to next:
 	//		(10^12) particles/cm^3
 	// 1/10^12 cm^3 / particle
