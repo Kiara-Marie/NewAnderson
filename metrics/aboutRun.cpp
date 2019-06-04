@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <ostream>
+#include <iomanip>
 #include "metric.h"
 #include "aboutRun.h"
 #include "utils.h"
@@ -17,6 +18,7 @@ AboutRun::AboutRun(int W,double MAXT,int numSites,int iterations,string jMethod,
 	this->iterations = iterations;
 	this->jMethod = jMethod;
 	this->eMethod = eMethod;
+	cout << W << MAXT << numSites << iterations << jMethod << eMethod << "\n";
 }
 
 // should be called after construction only
@@ -37,7 +39,7 @@ void AboutRun::printResult(){
 	fileName.append(toAdd);
 	fileBuffer.open(fileName,ios_base::out);
 	file.rdbuf(&fileBuffer);
-
+	file<<setprecision(3);
 	file<<this->eMethod;
 	file<<this->W<<", "<<this->MAXT<<", "<<this->numSites<<", "<<this->iterations<<"\n";
 	file<<"W"<<", "<<"MAXT"<<", "<<"numSites"<<", "<<"iterations"<<"\n"<<"\n";

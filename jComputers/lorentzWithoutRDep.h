@@ -1,5 +1,5 @@
-#ifndef _GAUSS_H_
-#define _GAUSS_H_
+#ifndef _LORENTZWITHOUTRDEP_H_
+#define _LORENTZWITHOUTRDEP_H_
 #include <iostream>
 #include <math.h>
 #include <armadillo>
@@ -12,14 +12,16 @@
 using namespace std;
 using namespace arma;
 
-class Gauss : public JComputer {
+class LorentzWithoutRDep : public JComputer {
 	private:
-		double mean;
-		double stdDev;
+		vec info;
+		double t;
+		double gamma;
 
 	public:
-		Gauss(int arg1,int nnOnly, int arg3);
+		LorentzWithoutRDep(double arg1,int nnOnly, int arg3);
 		double jFinder(int xi,int xj);
+		void additionalInfo(vec info);
 
 };
 

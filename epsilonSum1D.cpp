@@ -18,6 +18,8 @@
 #include "runSimA.h"
 #include "runSimSimple.h"
 #include "resultNoDiag.h"
+#include "jComputers/lorentzWithoutRDep.h"
+#include "jComputers/gauss.h"
 
 using namespace std;
 using namespace arma;
@@ -40,14 +42,14 @@ int main(int argc, char** argv){
 		iterations = stoi(argv[3]);
 	}
 	if (argc > 4){
-		MAXT = stoi(argv[4]);
+		MAXT = stod(argv[4]);
 	}
 	// how are we computing j?
 
-	double gamma = 1;
+	double stdDev = 1;
 	int nnOnly = 0;
 
-	Lorentz jComputer = Lorentz(MAXT,nnOnly,gamma);
+	Gauss jComputer = Gauss(MAXT,nnOnly,stdDev);
 	// set up metrics
 	vector<metric*> metrics;
 	metrics.push_back(new LevelSpacings());
@@ -57,10 +59,10 @@ int main(int argc, char** argv){
 	ResultFinder rf = ResultFinder(metrics);
 
 	string jMethod = jComputer.methodDesc();
-	AboutRun about = AboutRun(W,MAXT,numSites,iterations,jMethod,"Using  methodA\n");
+	AboutRun about = AboutRun(W,MAXT,numSites,iterations,jMethod,"Using Wischmann Method\n");
 	mat A(numSites,numSites);
 	for (int i = 0; i< iterations; i++ ){
-		runSimA(W, numSites,A,jComputer);
+		runSimSimple(W, numSites,A,jComputer);
 		//A.print("A: \n");
 		rf.saveResults(A, iterations);
 	}
