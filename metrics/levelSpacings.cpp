@@ -32,7 +32,10 @@ void LevelSpacings::save(const vec &eigval,const mat &eigvec,const mat &A, int i
 		up = eigval(i+1) - eigval(i);
 		down = eigval(i) - eigval(i - 1);
 		this->spacings.push_back(up);
-		this->avgENPrime(i) += up/down;
+		// cout<<"eigval i - 1 = "<<eigval(i - 1)<<"eigval i = "<<eigval(i)<<"eigval i + 1 = "<<eigval(i+1)<<"\n";
+		// double EnPrime = up/down < 1 ? up/down : down/up;
+		// cout<<"EnPrime = "<<EnPrime<<"\n";
+		this->avgENPrime(i) += up/down < 1 ? up/down : down/up;
 	}
 	return;
 }

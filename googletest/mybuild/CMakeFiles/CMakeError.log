@@ -1,0 +1,51 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/kiarag/projects/def-edgrant/kiarag/newNewAnderson/googletest/mybuild/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_e3fd6/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_e3fd6.dir/build.make CMakeFiles/cmTC_e3fd6.dir/build
+gmake[1]: Entering directory `/project/6022741/kiarag/newNewAnderson/googletest/mybuild/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e3fd6.dir/CheckSymbolExists.c.o
+/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc    -o CMakeFiles/cmTC_e3fd6.dir/CheckSymbolExists.c.o   -c /home/kiarag/projects/def-edgrant/kiarag/newNewAnderson/googletest/mybuild/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_e3fd6
+/cvmfs/soft.computecanada.ca/nix/store/678hyhmplmrgwg96yyyxdvbpchb8maya-cmake-cursesUI-qt4UI-3.8.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e3fd6.dir/link.txt --verbose=1
+/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc      -rdynamic CMakeFiles/cmTC_e3fd6.dir/CheckSymbolExists.c.o  -o cmTC_e3fd6 
+CMakeFiles/cmTC_e3fd6.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_e3fd6] Error 1
+gmake[1]: Leaving directory `/project/6022741/kiarag/newNewAnderson/googletest/mybuild/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_e3fd6/fast] Error 2
+
+File /home/kiarag/projects/def-edgrant/kiarag/newNewAnderson/googletest/mybuild/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/kiarag/projects/def-edgrant/kiarag/newNewAnderson/googletest/mybuild/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_93692/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_93692.dir/build.make CMakeFiles/cmTC_93692.dir/build
+gmake[1]: Entering directory `/project/6022741/kiarag/newNewAnderson/googletest/mybuild/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_93692.dir/CheckFunctionExists.c.o
+/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_93692.dir/CheckFunctionExists.c.o   -c /cvmfs/soft.computecanada.ca/nix/store/678hyhmplmrgwg96yyyxdvbpchb8maya-cmake-cursesUI-qt4UI-3.8.2/share/cmake-3.8/Modules/CheckFunctionExists.c
+Linking C executable cmTC_93692
+/cvmfs/soft.computecanada.ca/nix/store/678hyhmplmrgwg96yyyxdvbpchb8maya-cmake-cursesUI-qt4UI-3.8.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_93692.dir/link.txt --verbose=1
+/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_93692.dir/CheckFunctionExists.c.o  -o cmTC_93692 -lpthreads 
+/cvmfs/soft.computecanada.ca/nix/store/xs99yskj0vhrf6cmn2048i870r8nzqm0-binutils-2.28/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_93692] Error 1
+gmake[1]: Leaving directory `/project/6022741/kiarag/newNewAnderson/googletest/mybuild/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_93692/fast] Error 2
+
+
