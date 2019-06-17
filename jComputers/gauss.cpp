@@ -24,8 +24,8 @@ double Gauss::jFinder(int xi,int xj){
 	normal_distribution<double> distribution(this->mean,this->stdDev);
 	double p = distribution(generator);
 	double r = xi - xj;
-//	double j = p/(r*r*r);
-	double j = p;
+	double j = p/(r*r*r);
+//	double j = p;
 	if (this->nnOnly && (xi -xj > 1)){
 		return 0;
 	}
