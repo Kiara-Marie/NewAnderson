@@ -20,8 +20,8 @@ JComputer::JComputer( const JComputer& anotherJComputer ){
 }
 
 double JComputer::jFinder(int xi, int xj){
-	cerr<<"someone is trying to use a plain jcomputer\n";
-	return 0;
+	cerr<<"someone is trying to use a plain jcomputer!\n";
+	throw "Trying to use abstract j computer!\n";
 }
 
 string JComputer::methodDesc(){

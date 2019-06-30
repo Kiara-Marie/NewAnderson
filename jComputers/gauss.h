@@ -20,7 +20,6 @@ class Gauss : public JComputer {
 	public:
 		Gauss(int arg1,int nnOnly, int arg3);
 		double jFinder(int xi,int xj);
-
 };
 
 #endif

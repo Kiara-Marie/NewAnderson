@@ -27,7 +27,7 @@ void runSimSimple(double W, int length, mat& A, JComputer& jComputer){
 		toRmv = toRmv * eSum;
 		energies = energies - toRmv;
 	} else {
-		energies.zeros();
+		energies.ones() * 2;
 	}
 	A.diag() = energies;
 	if (jComputer.needsEnergy){

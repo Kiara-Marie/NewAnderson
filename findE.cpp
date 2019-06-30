@@ -1,5 +1,5 @@
 // Quantum defect as determined by M. Bixon and J. Jortner,
-// J. Chem. Phys. 105, 1363 ~1996!.
+// J. Chem. Phys. 105, 1363 ~1996.
 double QD0 = 1.21;
 double QD1 = 0.7286;
 double QD2 = -0.05;

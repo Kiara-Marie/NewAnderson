@@ -20,8 +20,8 @@ LorentzWithoutRDep::LorentzWithoutRDep(double arg1,int nnOnly, int arg3) : JComp
 
 	this->t = arg1; // 1/10^13 cm
 	this->gamma = arg3;
-	this->desc<<"j_ij = lorentzian(e_i-e_j), with t = "<<this->t<< " and gamma = "<<this->gamma;
-	this->desc<<"\n"<< this->t<< "/ (1 + {(e_i - e_j)/"<<this->gamma<<"}^2)\n";
+	this->desc<<"j_ij = lorentzian(e_i-e_j)/r**3, with t = "<<this->t<< " and gamma = "<<this->gamma;
+	this->desc<<"\n"<< this->t<< "/ (1 + {(e_i - e_j)/"<<this->gamma<<"}^2) / r_ij**3\n";
 	if (this->nnOnly){
 		this->desc<<"j_ij on nearest neighbours only\n";
 	}

@@ -20,6 +20,7 @@
 #include "resultNoDiag.h"
 #include "jComputers/lorentzWithoutRDep.h"
 #include "jComputers/gauss.h"
+#include "jComputers/constant.h"
 
 using namespace std;
 using namespace arma;
@@ -27,7 +28,7 @@ using namespace arma;
 
 int main(int argc, char** argv){
 
-	// set variables, using command line args if applicable
+	// set variables, using command line arguments if applicable
 	double W = 5;
 	int numSites = 3;
 	int iterations = 10;
@@ -46,10 +47,9 @@ int main(int argc, char** argv){
 	}
 	// how are we computing j?
 
-	double stdDev = 1;
+	double rdep = 1;
 	int nnOnly = 0;
-
-	Gauss jComputer = Gauss(MAXT,nnOnly,stdDev);
+	Constant jComputer = Constant(MAXT,nnOnly,rdep);
 	// set up metrics
 	vector<metric*> metrics;
 	metrics.push_back(new LevelSpacings());
@@ -59,7 +59,7 @@ int main(int argc, char** argv){
 	ResultFinder rf = ResultFinder(metrics);
 
 	string jMethod = jComputer.methodDesc();
-	AboutRun about = AboutRun(W,MAXT,numSites,iterations,jMethod,"Using Wischmann Method\n");
+	AboutRun about = AboutRun(W,MAXT,numSites,iterations,jMethod,"Using PseudoWischmann Method\n");
 	mat A(numSites,numSites);
 	for (int i = 0; i< iterations; i++ ){
 		runSimSimple(W, numSites,A,jComputer);

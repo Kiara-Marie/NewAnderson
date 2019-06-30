@@ -26,6 +26,11 @@ void runSim1D(double W, int length, mat& A, JComputer& jComputer){
 
 	if (W==0){
 	cerr<<"W was zero\n";
+	throw "Zero for W not implemented!\n";
+	}
+	unsigned int ulength = (unsigned int) length;
+	if (A.n_rows != ulength || A.n_cols != ulength){
+		throw "Given length doesn't match A!\n";
 	}
 
 	vec energies = zeros(length);
@@ -49,6 +54,7 @@ void runSim1D(double W, int length, mat& A, JComputer& jComputer){
 	//A.print();
 	if(!is_symmetric(A)){
 		cerr<<"Matrix Not Hermitian!\n";
+		throw "Matrix not Hermitian!\n";
 	}
 	return;
 }
@@ -67,7 +73,7 @@ void getEnergies(int length, vec& energies, double W){
 	lValues.transform( [](double val) { return floor(val); } );
 
 	for (int i = 0; i < length; i++){
-		char nc = (char) nValues(i);
+		char nc = (char) (nValues(i) > 1 ? nValues(i) : 2);
 		char lc = (char) lValues(i);
 
 		energies(i) = bindingEnergy(nc,lc);

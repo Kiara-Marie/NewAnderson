@@ -16,6 +16,7 @@ void runSimA(double W, int length, mat& A, JComputer& jComputer){
 
 	if (W==0){
 	cerr<<"W was zero\n";
+	throw "Zero for W not implemented!\n";
 	}
 
 	vec energies = zeros(length);
