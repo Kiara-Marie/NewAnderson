@@ -18,12 +18,12 @@ void runSimSimple(double W, int length, mat& A, JComputer& jComputer){
 	if (W != 0){
 		energies = energies * W;
 		vec toRmv = ones(length);
-		toRmv = toRmv * W/2;
+		toRmv = toRmv * (W/2);
 		energies = energies - toRmv;
 		double eSum = sum(energies);
 		energies = energies *2;
 
-		toRmv = toRmv / W/2;
+		toRmv = toRmv / (W/2);
 		toRmv = toRmv * eSum;
 		energies = energies - toRmv;
 	} else {
