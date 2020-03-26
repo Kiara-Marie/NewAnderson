@@ -5,34 +5,8 @@
 // Don't forget gtest.h, which declares the testing framework.
 
 #include <limits.h>
-#include "gtest/gtest.h"
-#include <iostream>
-#include <armadillo>
-#include <math.h>
-#include <string>
-#include <fstream>
-#include <ostream>
-#include "../../metrics/metric.h"
-#include "../../metrics/levelSpacings.h"
-#include "../../resultFinder.h"
-#include "../../runSim1D.h"
-#include "../../metrics/avgEigVec.h"
 #include "../../metrics/utils.h"
-#include "../../metrics/inversePR.h"
-#include "../../metrics/aboutRun.h"
-#include "../../jComputer.h"
-#include "../../jComputers/lorentz.h"
-#include "../../metrics/energyLevels.h"
-#include "../../runSimA.h"
-#include "../../runSimSimple.h"
-#include "../../resultNoDiag.h"
-#include "../../jComputers/lorentzWithoutRDep.h"
-#include "../../jComputers/gauss.h"
-#include "../../jComputers/constant.h"
-#include "../../findE.h"
-
-using namespace std;
-using namespace arma;
+#include "gtest/gtest.h"
 namespace {
 
 // Step 2. Use the TEST macro to define your tests.
